@@ -23,17 +23,24 @@
                 Console.WriteLine("Enter the length of your song:");
                 string songLength = Console.ReadLine();
                 BeerSong beerSong = new BeerSong();
-                beerSong.singBeerSong(int.Parse(songLength));
+                int number;
+
+                if(int.TryParse(songLength, out number)){
+                    beerSong.singBeerSong(int.Parse(songLength));
+
+                }
+                else{
+                    Console.WriteLine("Enter a number!");
+                }
+                
 
                 //Do something
             }
             else if (int.Parse(choice) == 2) {
 
-                //Do something
-                GuessTheGame game = new GuessTheGame();
-                game.Play();
-
-
+                //Play 
+                GuessTheNumber guessTheNumber = new GuessTheNumber();
+                guessTheNumber.Play();
 
             }
             else

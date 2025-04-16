@@ -8,10 +8,9 @@ namespace AssignmentOneAndTwo
 {
     internal class BeerSong
     {
-        int songLength;
+        //This was before , I wrapped my head around regular expressions
 
-
-
+        
         public char AddLetterS(int value)
         {
             if (value > 1)

@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 namespace AssignmentOneAndTwo
 {
 
-    class GuessTheGame
+    class GuessTheNumber
     {
         private int secretNumber;
         private int attempts;
 
-        public GuessTheGame()
+        public GuessTheNumber()
         {
             Random random = new Random();
             secretNumber = random.Next(1, 101);
             attempts = 0;
         }
-
+        
         public string CheckGuess(int guess)
         {
             attempts++;
@@ -26,6 +26,7 @@ namespace AssignmentOneAndTwo
             if (guess < secretNumber)
                 return "Too low.";
             else if (guess > secretNumber)
+
                 return "Too high.";
             else
                 return $"Correct! You guessed the number in {attempts} attempt{(attempts == 1 ? "" : "s")}.";
