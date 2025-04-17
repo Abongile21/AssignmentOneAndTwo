@@ -19,17 +19,30 @@ namespace AssignmentOneAndTwo
             attempts = 0;
         }
         
-        public string CheckGuess(int guess)
+        public void CheckGuess(int guess)
         {
             attempts++;
 
             if (guess < secretNumber)
-                return "Too low.";
-            else if (guess > secretNumber)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Too low.");
 
-                return "Too high.";
+            }
+            else if (guess > secretNumber)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Too high.");
+            }
+
             else
-                return $"Correct! You guessed the number in {attempts} attempt{(attempts == 1 ? "" : "s")}.";
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Correct! You guessed the number in {attempts} attempt{(attempts == 1 ? "" : "s")}.");
+                
+            }
+            Console.Beep();
+            Console.ResetColor();
         }
 
         public void Play()
@@ -47,17 +60,22 @@ namespace AssignmentOneAndTwo
                 if (input.ToLower() == "exit")
                 {
                     Console.WriteLine("Game exited. Thanks for playing!");
+                    Console.Beep();
                     break;
                 }
 
                 if (!int.TryParse(input, out guess))
                 {
+                    Console.ForegroundColor= ConsoleColor.Red;
+
                     Console.WriteLine("Please enter a valid number.");
+                    Console.ResetColor();
+                    Console.Beep();
                     continue;
                 }
 
-                string result = CheckGuess(guess);
-                Console.WriteLine(result);
+                CheckGuess(guess);
+             
 
                 if (guess == secretNumber)
                     break;
